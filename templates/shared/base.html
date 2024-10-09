@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    {% include "./shared/_headerREF.html" %}
+    {% block exteraStyles %}{% endblock %}
+<body>
+    {% include "./shared/HeaderComponent.html" %}
+    <div style="min-height:100vh">
+        {% block content %}{% endblock %}
+    </div>
+    {% include "./shared/FooterComponent.html" %}
+</body>
+    {% include "./shared/_footerREF.html" %}  
+    {% block exteraScripts %}{% endblock %}
+</html>
