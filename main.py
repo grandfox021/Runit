@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import secrets
 from werkzeug.security import generate_password_hash,check_password_hash 
 from translations import translations
-
+from flask_mailman import Mail,EmailMessage
 
 app = Flask(__name__,template_folder="templates")
 
@@ -12,20 +12,39 @@ DEFAULT_IMAGE_PATH = 'static/uploads/default_pic/default.jpg'  # Define the defa
 UPLOAD_FOLDER = 'static/uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# Flask-Mail configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'hbsmtp635@gmail.com'
+app.config['MAIL_PASSWORD'] = 'ylgt aavy aawr gwwg'
+app.config['MAIL_DEFAULT_SENDER'] = 'hbsmtp635@gmail.com'
+
+
+mail = Mail(app)
 
 
 
 # User table with one-to-many relationship with Post and Comment
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
+    first_name = db.Column(db.String(80), unique=False, nullable=False)
+    last_name = db.Column(db.String(80), unique=False, nullable=False)
     email = db.Column(db.String(150),unique = True , nullable = False)
+    phone_number = db.Column(db.String(20),unique = True , nullable = True)
+    profile_pic = db.Column(db.String(120), nullable=True) 
     _password = db.Column(db.String(120) , nullable=False)
     is_authenticated =db.Column(db.Boolean, default=False, nullable=False)
+    is_admin=db.Column(db.Boolean, default=False, nullable=False)
+    is_superuser =db.Column(db.Boolean, default=False, nullable=False)
 
 
     def set_auth_true(self) :
@@ -73,26 +92,27 @@ def home() :
 @app.route("/login/",methods = ['POST','GET'])
 def login () :
 
-    if "username" in session:
+    if "user" in session:
         flash(translations[session['language']]['already_logged_in']) 
         return redirect(url_for("home"))
 
     if request.method == "POST" and "sign_in" in request.form:
-        username = request.form['username']
-        password = request.form['password']
+        first_name = request.form['firstname']
+        last_name = request.form['lastname']
         email = request.form['email']
+        password = request.form['password']
 
         # Query the user by username
-        user = User.query.filter_by(username=username,email = email).first()
+        user = User.query.filter_by(email = email).first()
 
         if user:
-            print(f"User found: {user.username}")  # Debugging
+            print(f"User found: {user.first_name}")  # Debugging
             print(f"Entered password: {password}")  # Debugging
 
             if user.verify_password(password):
                 print("Password matched")  # Debugging
                 session['user_id'] = user.id  # Store user_id in session
-                session['username'] = user.username
+                session['user'] = user.email
                 user.set_auth_true()
                 flash(translations[session['language']]['login_successful']) 
                 return redirect(url_for("home"))
@@ -115,19 +135,22 @@ def signup() :
 
     if request.method == 'POST' and "sign_up" in request.form :
 
-        username = request.form['username']
-        if User.query.filter_by(username=username).first() :
-            flash(translations[session['language']]['username_already_taken'],"info") 
-            return redirect(url_for("signup"))
+        first_name = request.form['firstname']
+        last_name = request.form['lastname']
         email = request.form['email']
         password = request.form['password']
+
+        if User.query.filter_by(email=email).first() :
+            flash(translations[session['language']]['username_already_taken'],"info") 
+            return redirect(url_for("signup"))
+
         # hashed_password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
-        new_user = User(username=username,email = email, password=password)
+        new_user = User(first_name=first_name,last_name = last_name ,email = email, password=password)
         
         db.session.add(new_user)
         db.session.commit()
         
-        session["username"] = username
+        session["user"] = email
         session["user_id"] = new_user.id
 
 
@@ -136,6 +159,17 @@ def signup() :
     else : 
         return render_template("signup.html", translations=translations[session["language"]])
 
+
+
+@app.route("/send-email")
+def send_email() :
+    title = "reset Pass"
+    body = "hello this is a message from support to reset your pass please follow"
+    sender_email = "hbsmtp635@gmail.com"
+    reciever_email = ["person-email"]
+    msg = EmailMessage(subject=title,body=body,from_email=sender_email,to=reciever_email)
+    msg.send()
+    return "message sent successfully check your inbox"
 
 
 

@@ -1,6 +1,8 @@
 translations = {
     'en': {
         'language': 'en',
+        'firstname' : 'Firstname',
+        'lastname' : 'Lastname',
         'home': 'Home',
         'profile': 'Profile',
         'create_post': 'Create A Post',
@@ -47,6 +49,8 @@ translations = {
     'fa': {
         'language': 'fa',
         'home': 'خانه',
+        'firstname' : 'نام',
+        'lastname' : 'نام خانوادگی',
         'profile': 'پروفایل',
         'create_post': 'ایجاد پست',
         'logout': 'خروج',
