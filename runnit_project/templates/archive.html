@@ -1,0 +1,174 @@
+{% extends './shared/base.html' %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"> Runit </a></li>
+        <li class="breadcrumb-item active"><a href="#">دوره ها</a></li>
+        <li class="breadcrumb-item active" aria-current="page"> برنامه نویسی وب </li>
+      </ul>
+    </nav>
+</div>
+
+<div class="container">
+    <section class="term-categories">
+        
+        <div class="top-bar">
+
+            <header><h1> دوره های <span> برنامه نویسی وب </span> </h1> <span> 2 دوره </span></header>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12 pull-right">
+                    <form action="" method="">
+                        <div class="input">
+                            <input type="text" name="" placeholder="موضوع مورد نظر ...">
+                            <button><i class="zmdi zmdi-search"></i></button>
+                        </div>
+                    </form>
+                </div>  
+                <div class="col-md-4 col-sm-6 col-xs-12 pull-right">
+                    <div class="switch-field available">
+                        <input id="available-filter-1" name="available" value="all" checked="" type="radio">
+                        <label for="available-filter-1"> همه </label>
+                        <input id="available-filter-2" name="available" value="off" type="radio">
+                        <label for="available-filter-2"> خریدنی </label>
+                        <input id="available-filter-3" name="available" value="normal" type="radio">
+                        <label for="available-filter-3"> رایگان </label>
+                    </div>
+                </div>  
+                <div class="col-md-4 col-sm-6 col-xs-12 pull-left">
+                    <div class="select-ddl">
+                        <select>
+                            <option> مرتب سازی </option>
+                            <option> قیمت </option>
+                            <option> مدرت زمان دوره </option>
+                            <option> تاریخ انتشار </option>
+                        </select>
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+        <div class="row">
+
+            <aside class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                
+                <section class="aside-section filter-by-price">
+                    <header><h3> فیلتر بر اساس قیمت </h3></header>
+                    <div class="price-range">
+                        <input type="hidden" value="" id="min-value" name="min_price">
+                        <input type="hidden" value="" id="max-value" name="max_price">
+                        <div class="price-bar"><div id="priceFilter"></div></div>
+                        <div class="max-price">تا <span id="max-text">500000</span> تومان</div>
+                        <div class="min-price">از <span id="min-text">رایگان</span> تومان</div>
+                        <div class="clearfix"></div>
+                    </div>
+                </section>
+
+                <section class="aside-section filter-by-category">
+                    <header><h3> دسته بندی موضوعات </h3></header>
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <input type="checkbox" name="" id="cat-1">
+                                <label for="cat-1"> برنامه نویسی وب </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="cat-2">
+                                <label for="cat-2"> برنامه نویسی موبایل </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="cat-3">
+                                <label for="cat-3"> برنامه نویسی وب </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="cat-4">
+                                <label for="cat-4"> برنامه نویسی موبایل </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="cat-5">
+                                <label for="cat-5"> برنامه نویسی وب </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="cat-6">
+                                <label for="cat-6"> برنامه نویسی موبایل </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="cat-7">
+                                <label for="cat-7"> برنامه نویسی وب </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="cat-8">
+                                <label for="cat-8"> برنامه نویسی موبایل </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="cat-9">
+                                <label for="cat-9"> برنامه نویسی وب </label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" id="cat-10">
+                                <label for="cat-10"> برنامه نویسی موبایل </label>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+            </aside>
+
+            <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+            
+                <section class="terms-items">
+                    <div class="row">
+                        <!-- col -->
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 term-col">
+                            <article>
+                                <a href="" class="img-layer"><img src="./../static/images/pic/1.jpg"></a>
+                                <h2><a href=""> آموزش برنامه نویسی </a></h2>
+                                <span> رایگان </span>
+                                <i>15:30:00</i>
+                            </article>
+                        </div>    
+                        <!-- /col -->
+
+                        <!-- col -->
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 term-col">
+                            <article>
+                                <a href="" class="img-layer"><img src="./../static/images/pic/4.jpg"></a>
+                                <h2><a href=""> آموزش طراحی سایت پروژه محور  </a></h2>
+                                <span> رایگان</span>
+                                <i>20:30:00</i>
+                            </article>
+                        </div>    
+                        <!-- /col -->
+                    </div>
+
+
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true"><i class="zmdi zmdi-chevron-right"></i></span>
+                              </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true"><i class="zmdi zmdi-chevron-left"></i></span>
+                              </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </section>
+
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

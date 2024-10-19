@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    {% include "./shared/MetaComponent.html" %}
+
+    <title>
+        {% block title %} Runit {% endblock %}
+    </title>
+    {% include "./shared/_headerREF.html" %}
+    {% block exteraStyles %}{% endblock %}
+<body>
+    {% include "./shared/HeaderComponent.html" %}
+        {% block content %}{% endblock %}
+    {% include "./shared/FooterComponent.html" %}
+</body>
+    {% include "./shared/_footerREF.html" %}  
+    {% block exteraScripts %}{% endblock %}
+</html>

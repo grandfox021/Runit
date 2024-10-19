@@ -1,0 +1,91 @@
+<div class="landing-layer">
+    <div class="container">
+        <nav>
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <ul>
+                        <li>
+                            <a href=""> منابع  </a>
+                            <a href=""> درباره ما </a>
+                            <a href=""> تماس با ما </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="clientarea">
+                    {% if user is not none%}
+                    <div class="loggein ">
+                        <i class="zmdi zmdi-account"></i><a href="{{url_for('user_account')}}"> {{user}}</a>
+                   </div>
+                   <div class="loggein ">
+                    <i class="zmdi zmdi-account"></i><a href="{{url_for('logout')}}">خروج</a>
+                    </div>
+
+                    {% else %}
+                    
+   
+                    <div class="">
+                        <i class="zmdi zmdi-account"></i>
+                        <a href="{{url_for('login')}}"> ورود </a> /
+                        <a href="{{url_for('signup')}}"> عضویت </a>
+                    </div>                     
+
+                    {% endif %}
+                    </div>  
+                </div>
+            </div>
+        </nav>
+        <header>
+            <a href="" class="logo"><img src="./../../static/images/logo.jpg" height='80px'></a>
+            <h1> با اساتید مجرب و کارآزموده در رانیت </h1>
+            <h2> آموزش ببینید ، تجربه کسب کنید و بازار کار شوید </h2>
+            <h3> با کمترین هزینه آموزش ببینید </h3>
+        </header>
+        <div class="search-form">
+            <form>
+                <input type="text" name="" placeholder="دنبال چی میگردی ؟">
+                <button><i class="zmdi zmdi-search"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- main manu -->
+<div class="main-menu">
+    <div class="container">
+        <nav>
+            <span class="responsive-sign"><i class="zmdi zmdi-menu"></i></span>
+            <ul>
+                <li><a href="{{ url_for('home') }}">صفحه اصلی  </a>
+                    <ul>
+                        <li><a href=""> تیتر </a></li>
+                        <li><a href=""> اخبار </a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('home') }}"> دوره های رانیت </a>
+                    <ul>
+                        <li><a href=""> پایتون </a></li>
+                        <li><a href=""> ری اکت </a></li>
+                        <li><a href=""> هوش مصنوعی </a></li>
+                        <li><a href="">  سئو </a></li>
+                        <li><a href="">طراحی سایت</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{url_for('login')}}"> ورود به سایت</a></li>
+                <li><a href="">  مراحل ثبت نام </a>
+                    <ul>
+                        <li><a href="{{url_for('signup')}}">  ثبت نام در سایت </a></li>
+                        <li><a href="">  IQازمون  </a></li>
+                        <li><a href="">ارسال رزومه</a></li>
+                        <li><a href="">ازمون زبان انگلیسی </a></li>
+                        <li><a href=""> ازمون برنامه نویسی </a></li>
+                    </ul>
+                </li>
+                <li><a href=""> درباره ما </a></li>
+                <li><a href=""> اطلاعات مجموعه </a></li>
+                <li><a href=""> نظرات شرکت کنندگان قبلی  </a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- /main manu -->
